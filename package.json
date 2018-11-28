@@ -1,0 +1,23 @@
+{
+  "name": "check-unpushed-commits",
+  "version": "0.1.0",
+  "description": "check repos in a specified folder for commits that haven't been pushed",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "patch-release": "npm version patch && npm publish && git push --follow-tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sodiumhalogenteam/check-unpushed-commits.git"
+  },
+  "keywords": [
+    "git"
+  ],
+  "author": "Zach Boatwright",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sodiumhalogenteam/check-unpushed-commits/issues"
+  },
+  "homepage": "https://github.com/sodiumhalogenteam/check-unpushed-commits#readme"
+}
