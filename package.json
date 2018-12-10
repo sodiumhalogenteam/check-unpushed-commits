@@ -1,6 +1,6 @@
 {
   "name": "check-unpushed-commits",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "check repos in a specified folder for commits that haven't been pushed",
   "main": "index.js",
   "bin": {
