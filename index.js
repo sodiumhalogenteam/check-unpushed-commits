@@ -44,6 +44,22 @@ const getDirectories = async source =>
     .map(name => join(source, name))
     .filter(isDirectory);
 
+const checkForCommits = dir => {
+  new Promise((resolve, reject) => {
+    const command = `cd ${dir} && git status`;
+    exec(command, function(err, stdout, stderr) {
+      const result = stdout.trim().toString("utf8");
+      const hasCommitsToPush = result.includes("Your branch is ahead");
+      if (hasCommitsToPush) {
+        console.log(`Needs push on: ${dir}`);
+      } else {
+        console.log(`All good: ${dir}`);
+      }
+      resolve("done");
+    });
+  });
+};
+
 const main = async () => {
   const dir = program.args.toString("utf8");
   console.log(`Okay, let's check "${dir}"`);
@@ -55,9 +71,13 @@ const main = async () => {
   }
 
   // get sub directories
-  console.log(await isDirectory(dir), await getDirectories(dir));
+  const subDirectories = await getDirectories(dir);
 
   // TODO: check each repo for up pushed commits
+  for (let i = 0; i < subDirectories.length; i++) {
+    await checkForCommits(subDirectories[i]);
+  }
+
   // TODO: list each directory and show pass/fail if "Your branch is ahead"
 };
 if (!program.dir) console.log(`You must add a directory to check`);
