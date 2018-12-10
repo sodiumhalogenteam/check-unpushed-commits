@@ -14,5 +14,5 @@
 - [x] fetch all sub git repos
 - [x] check if current dir in loop has commits to push
 - [x] add list of directories that pass or fail
-- [] add theme output for pass fail
-- [] add config for default directory or suggest alias usage
+- [ ] add theme output for pass fail
+- [ ] add config for default directory or suggest alias usage
