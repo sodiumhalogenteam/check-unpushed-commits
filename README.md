@@ -1,5 +1,7 @@
 # check-unpushed-commits
 
+[![check-unpushed-commits npm version](https://img.shields.io/npm/v/check-unpushed-commits.svg)](https://npmjs.org/package/check-unpushed-commits)
+
 ![check-unpushed-commits example](https://sh-drop.s3.us-east-1.amazonaws.com/cs/cuc-tutorial.png)
 
 ## install and usage
