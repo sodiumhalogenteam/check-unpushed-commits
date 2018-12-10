@@ -2,6 +2,8 @@
 
 const program = require("commander");
 const { exec } = require("child_process");
+const { lstatSync, readdirSync } = require("fs");
+const { join } = require("path");
 var pjson = require("./package.json");
 
 program
@@ -33,30 +35,28 @@ const checkVersion = () => {
   });
 };
 
-// check wip/ directory
-// each directory check for commits to push
+// check directory
+const isDirectory = async source => await lstatSync(source).isDirectory();
 
-const checkForDirectory = dir => {
-  return new Promise((resolve, reject) => {
-    const command = `if test -d ${dir}; then echo "exist"; fi`;
-    exec(command, function(err, stdout, stderr) {
-      const output = stdout.toString("utf8");
-      const found = output.includes("exist");
-      resolve(found);
-    });
-  });
-};
+// each directory check for commits to push
+const getDirectories = async source =>
+  await readdirSync(source)
+    .map(name => join(source, name))
+    .filter(isDirectory);
 
 const main = async () => {
-  console.log(`Okay, let's check "${program.args}"`);
-  const isDirectoryFound = await checkForDirectory(program.args);
+  const dir = program.args.toString("utf8");
+  console.log(`Okay, let's check "${dir}"`);
+  const isDirectoryFound = await isDirectory(dir);
 
   if (!isDirectoryFound) {
     console.log(`😩  Directory was not found.\n\n`);
     return;
   }
 
-  // TODO: get sub directories
+  // get sub directories
+  console.log(await isDirectory(dir), await getDirectories(dir));
+
   // TODO: check each repo for up pushed commits
   // TODO: list each directory and show pass/fail if "Your branch is ahead"
 };
