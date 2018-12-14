@@ -28,5 +28,17 @@
   "homepage": "https://github.com/sodiumhalogenteam/check-unpushed-commits#readme",
   "dependencies": {
     "commander": "^2.19.0"
-  }
+  },
+  "contributors": [
+    {
+      "name": "Zach Boatwright",
+      "email": "szboatwright@gmail.com",
+      "url": "https://www.npmjs.com/~zboatwright"
+    },
+    {
+      "name": "Chance Smith",
+      "email": "chance@sodiumhalogen.com",
+      "url": "https://github.com/chancesmith"
+    }
+  ]
 }
