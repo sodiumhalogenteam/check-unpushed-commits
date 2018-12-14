@@ -19,3 +19,4 @@ Simple tool to check all repos in a specified folder for commits that haven't be
 - [ ] add theme output for pass/fail
 - [ ] add config for default directory or suggest alias usage
 - [ ] prompt user to auto push all that were not pushed??
+- [ ] compile down for npm package
